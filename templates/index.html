@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Sales Prediction Model</title>
+  <style>
+      div.container {
+      display: inline-block;
+      }
+  </style>
+</head>
+<body>
+ <div>
+	<h1>Sales Forecasting</h1>
+     <!-- Data Input For Receiving Query-->
+    <form action="{{ url_for('predict')}}" method="post">
+        <p>Please input only decimal values with no signs. Temperature is in degrees Farenheit and fuel prices are in USD.</p>
+    	<input type="text" name="temp" placeholder="Expected Average Temperature" required="required" size="30"/>
+        <input type="text" name="fuel" placeholder="Expected Average Fuel Price " required="required" size="30" />
+        <br>
+        <br>
+        <button type="submit">Predict sales</button>
+        <br>
+       {{ error_text }}
+    </form>
+   <br>
+     <br>
+       {{ prediction_text }}
+     <br>
+
+    <div>
+         <div class="container">
+             <h1>Sales by Temperature</h1>
+             <img src="/static/plot1.png" alt="Sales by Temperature">
+         </div>
+         <div class="container">
+             <h1>Sales By Fuel Price</h1>
+             <img src="/static/plot2.png" alt="Sales By Fuel Price">
+         </div>
+         <div class="container">
+             <h1>Fuel Price By Temperature</h1>
+             <img src="/static/plot3.png" alt="Fuel Price By Temperature">
+        </div>
+    </div>
+     <br>
+   <br>
+   <br>
+ </div>
+</body>
+</html>
